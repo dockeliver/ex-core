@@ -7,12 +7,9 @@ defmodule Dockeliver do
     import Supervisor.Spec, warn: false
 
     children = [
-      # Start the endpoint when the application starts
       supervisor(Dockeliver.Endpoint, []),
-      # Start the Ecto repository
       supervisor(Dockeliver.Repo, []),
-      # Here you could define other workers and supervisors as children
-      # worker(Dockeliver.Worker, [arg1, arg2, arg3]),
+      worker(Dockeliver.Worker.Download, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
